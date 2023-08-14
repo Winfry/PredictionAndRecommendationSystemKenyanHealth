@@ -23,4 +23,25 @@ with st.sidebar:
 if (selected == 'Chronic Kidney Prediction'): 
 
     #Page Title
-    st.title('Chronic Kidney Disease Prediction Using Machine Learning')             
+    st.title('Chronic Kidney Disease Prediction Using Machine Learning Algorithm')   
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        Age = st.number_input('Age', max_value=90)
+
+    with col2:
+        BloodPressure =  st.number_input('BloodPressure', max_value=180)
+
+    with col3:
+        SpecificGravity = st.number_input('SpecificGravity', max_value=1.025)
+
+    with col1:
+        Albumin = st.number_input('Albumin', max_value=5.00)
+
+    with col2:
+        Sugar = st.number_input('Sugar', max_value=5.00) 
+
+    with col3:
+        BloodGlucoseRandom = st.number_input('BloodGlucoseRandom', max_value=490)
+                            
