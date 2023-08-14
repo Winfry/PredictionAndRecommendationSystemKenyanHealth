@@ -43,10 +43,19 @@ if (selected == 'Chronic Kidney Prediction'):
         Sugar = st.number_input('Sugar', max_value=5.00) 
 
     with col3:
-        BloodGlucoseRandom = st.number_input('BloodGlucoseRandom', max_value=490)
+        RedBloodCells = st.selectbox('RedBloodCells: ', ["normal", "abnormal"] )    
 
     with col1:
-        BloodUrea= st.number_input('BloodUrea', max_value=400)    
+        BloodGlucoseRandom = st.number_input('BloodGlucoseRandom', max_value=490)
+
+    with col2:
+        BloodUrea= st.number_input('BloodUrea', max_value=400)   
+
+    with col3:
+        Bacteria = st.selectbox('Bacteria: ', ["notpresent", "present"])   
+
+    with col1:
+        PusCellClumps = st.selectbox('PusCellClumps: ', ["notpresent", "present"])     
 
         
                             
