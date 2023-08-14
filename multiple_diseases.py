@@ -44,4 +44,9 @@ if (selected == 'Chronic Kidney Prediction'):
 
     with col3:
         BloodGlucoseRandom = st.number_input('BloodGlucoseRandom', max_value=490)
+
+    with col1:
+        BloodUrea= st.number_input('BloodUrea', max_value=400)    
+
+        
                             
