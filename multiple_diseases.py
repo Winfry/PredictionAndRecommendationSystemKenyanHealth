@@ -1,6 +1,8 @@
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
+from PIL import Image
+
 
 #loading the saved models
 
@@ -23,6 +25,7 @@ with st.sidebar:
 if (selected == 'Chronic Kidney Prediction'): 
 
     #Page Title
+    image=Image.open('poster.jpeg')
     st.title('Chronic Kidney Disease Prediction Using Machine Learning Algorithm')   
     st.markdown('The kidneys are two bean-shaped organs, each about the size of a fist.They are located just below the rib cage, one on each side of your spine.') 
     st.markdown('They work hard to remove wastes, toxins, and excess fluid. They also help control blood pressure, stimulate production of red blood cells, keep your bones healthy, and regulate blood chemicals that are essential to life.Kidneys that function properly are critical for maintaining good health, however, more than one in seven Kenyan adults are estimated to have chronic kidney disease (CKD).')
