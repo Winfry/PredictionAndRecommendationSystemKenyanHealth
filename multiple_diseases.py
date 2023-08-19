@@ -15,7 +15,7 @@ with st.sidebar:
                             'Heart Prediction ',
                             'Diabetes Prediction'],
 
-                            icons=['activity','heart','person'],
+                            icons=['kidney','activity','heart','person'],
                             default_index=0)
 
 
@@ -26,7 +26,7 @@ if (selected == 'Chronic Kidney Prediction'):
     st.title('Chronic Kidney Disease Prediction Using Machine Learning Algorithm')   
     st.markdown('The kidneys are two bean-shaped organs, each about the size of a fist.They are located just below the rib cage, one on each side of your spine.') 
     st.markdown('They work hard to remove wastes, toxins, and excess fluid. They also help control blood pressure, stimulate production of red blood cells, keep your bones healthy, and regulate blood chemicals that are essential to life.Kidneys that function properly are critical for maintaining good health, however, more than one in seven Kenyan adults are estimated to have chronic kidney disease (CKD).')
-    st.markdown('In this webapp ,the project ideally is to predict if one has a Chronic Kidney Disease based on these important health factors and parameters  ')
+    st.markdown('In this webapp ,the project ideally is to predict if one has a Chronic Kidney Disease based on these important health factors and parameters:  ')
 
     col1, col2, col3 = st.columns(3)
 
@@ -58,7 +58,9 @@ if (selected == 'Chronic Kidney Prediction'):
         Bacteria = st.selectbox('Bacteria: ', ["notpresent", "present"])   
 
     with col1:
-        PusCellClumps = st.selectbox('PusCellClumps: ', ["notpresent", "present"])     
+        PusCellClumps = st.selectbox('PusCellClumps: ', ["notpresent", "present"]) 
+        
+            
 
         
                             
