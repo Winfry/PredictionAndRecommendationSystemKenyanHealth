@@ -25,7 +25,7 @@ with st.sidebar:
 if (selected == 'Chronic Kidney Prediction'): 
 
     #Page Title
-    image=Image.open('kidinfo.png')
+    image=Image.open('ki.jpg')
     st.image(image)
     st.title('Chronic Kidney Disease Prediction Using Machine Learning Algorithm')   
     st.markdown('The kidneys are two bean-shaped organs, each about the size of a fist.They are located just below the rib cage, one on each side of your spine.') 
@@ -74,4 +74,17 @@ if (selected == 'Chronic Kidney Prediction'):
         RedBloddCellCount = st.number_input('RedBloodCellCount', max_value=100)
 
     with col2:
-        WhiteBloodCellCount = st.number_input('WhiteBloodCellCount', max_value=100)                            
+        WhiteBloodCellCount = st.number_input('WhiteBloodCellCount', max_value=100)   
+
+    # code for Prediction
+    Kidneydisease = ''
+
+    if st.button("Kidney Test Result"):
+        kidney_prediction = kidney_model.predict(
+            [[Age, Albumin, BloodGlucoseRandom, Appetite, RedBloodCells, BloodPressure, RedBloddCellCount, Sugar, BloodUrea, SpecificGravity, Bacteria, Diabetes, WhiteBloodCellCount, Haemoglobin]]
+        )                             
+
+        if(kidney_prediction[0] == 1):
+            Kidneydisease = 'Congratulations! Predictions show you do not have a Kidney Disease.Keep on Maintaining Healthy Kidneys!'
+
+
