@@ -86,5 +86,5 @@ if (selected == 'Chronic Kidney Prediction'):
 
         if(kidney_prediction[0] == 1):
             Kidneydisease = 'Congratulations! Predictions show you do not have a Kidney Disease.Keep on Maintaining Healthy Kidneys!'
-
+            st.success(Kidneydisease)
 
