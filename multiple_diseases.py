@@ -50,41 +50,45 @@ if (selected == 'Chronic Kidney Prediction'):
         Sugar = st.number_input('Sugar', max_value=5.00) 
 
     with col3:
-        RedBloodCells = st.selectbox('RedBloodCells: ', ["normal", "abnormal"] )    
-
-    with col1:
         BloodGlucoseRandom = st.number_input('BloodGlucoseRandom', max_value=490)
 
-    with col2:
+    with col1:
         BloodUrea= st.number_input('BloodUrea', max_value=400)   
 
-    with col3:
-        Bacteria = st.selectbox('Bacteria: ', ["notpresent", "present"])   
-
-    with col1:
-        Appetite = st.selectbox('Appetite: ', ["good", "bad"]) 
-
     with col2:
+        Potassium = st.number_input('Potassium: ', max_value=47) 
+
+    with col3:
         Haemoglobin = st.number_input('Haemoglobin:', max_value=18)    
             
-    with col3:
-        Diabetes = st.selectbox('Diabetes: ', ["no", "yes"])
-        
     with col1:
+        Sodium = st.number_input('Sodium: ', max_value=163)
+        
+    with col2:
         RedBloddCellCount = st.number_input('RedBloodCellCount', max_value=100)
 
-    with col2:
-        WhiteBloodCellCount = st.number_input('WhiteBloodCellCount', max_value=100)   
+    with col3:
+        WhiteBloodCellCount = st.number_input('WhiteBloodCellCount', max_value=100) 
+
+    with col1:
+        SerumCreatinine = st.number_input('SerumCreatinine: ', max_value=76)      
 
     # code for Prediction
     Kidneydisease = ''
 
     if st.button("Kidney Test Result"):
         kidney_prediction = kidney_model.predict(
-            [[Age, Albumin, BloodGlucoseRandom, Appetite, RedBloodCells, BloodPressure, RedBloddCellCount, Sugar, BloodUrea, SpecificGravity, Bacteria, Diabetes, WhiteBloodCellCount, Haemoglobin]]
+            [[Age, BloodPressure, SpecificGravity, Albumin, Sugar, BloodGlucoseRandom, BloodUrea, SerumCreatinine, Sodium, Potassium, Haemoglobin]]
         )                             
 
         if(kidney_prediction[0] == 1):
             Kidneydisease = 'Congratulations! Predictions show you do not have a Kidney Disease.Keep on Maintaining Healthy Kidneys!'
             st.success(Kidneydisease)
+            image=Image.open('nockd.png')
+            st.image(image)
+
+        else:
+            Kidneydisease = 'The Predictions show there is chances of A Chronic Kidney Disease'
+            st.error(Kidneydisease)
+
 
