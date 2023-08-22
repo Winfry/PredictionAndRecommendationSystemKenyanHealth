@@ -90,5 +90,10 @@ if (selected == 'Chronic Kidney Prediction'):
         else:
             Kidneydisease = 'The Predictions show there is chances of A Chronic Kidney Disease'
             st.error(Kidneydisease)
-
-
+            st.markdown("Now that you are aware of the likelihood of a chronic kidney disease,No need to worry. Here is a list of the Renal Facilities In Kenya That Offer Kidney Check Up Services: ")
+            image=Image.open('poster.jpeg')
+            st.image(image)
+            
+            #Loading the Model 
+            #Applying the XGB model Algorithm on the point
+            
