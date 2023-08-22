@@ -2,7 +2,11 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 from PIL import Image
-
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd 
+import numpy as np
+import random
 
 #loading the saved models
 
@@ -94,6 +98,16 @@ if (selected == 'Chronic Kidney Prediction'):
             image=Image.open('poster.jpeg')
             st.image(image)
             
-            #Loading the Model 
-            #Applying the XGB model Algorithm on the point
+            #Loading the Hospitals  
+            #Applying the data
+           
             
+
+            df = pd.DataFrame(
+    {
+              "name": ['HOSPITAL NAME', 'NHIF BRANCH', 'COUNTY'],
+              "url": ["https://www.jitimu.com/2023/02/nhif-hospitals-offering-renal-dialysis"],
+              "stars": [random.randint(0, 68) for _ in range(3)]
+    }          
+)
+            st.dataframe(df)
