@@ -103,11 +103,4 @@ if (selected == 'Chronic Kidney Prediction'):
            
             
 
-            df = pd.DataFrame(
-    {
-              "name": ['HOSPITAL NAME', 'NHIF BRANCH', 'COUNTY'],
-              "url": ["https://www.jitimu.com/2023/02/nhif-hospitals-offering-renal-dialysis"],
-              "stars": [random.randint(0, 68) for _ in range(3)]
-    }          
-)
-            st.dataframe(df)
+            
