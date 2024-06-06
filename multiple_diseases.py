@@ -11,7 +11,7 @@ import random
 #loading the saved models
 
 kidney_model = pickle.load(open('kidney_model.sav', 'rb'))
-heart_model = pickle.load(open("heart.sav",'rb'))
+heart_model = pickle.load(open("heart_model.sav",'rb'))
 
 #SIDEBAR FOR NAVIGATION
 with st.sidebar:
@@ -104,4 +104,57 @@ if (selected == 'Chronic Kidney Prediction'):
            
             
 
+
+#Heart diesease Prediction Page
+if(selected == 'Heart Disease Prediction'):
+
+    #Page title
+    st.title('Heart disease Prediction using ML')
+
+    #getting the input data from the user
+    col1,col2,col3,col4 = st.columns(4)
+
+    with col1:
+        age = st.text_input('Age of the person')
+    
+    with col2:
+        sex= st.text_input('Sex')
+
+    with col3:
+        cp = st.text_input('chest Pain types')
+    with col4:
+        RestingBP= st.text_input('Resting Blood Pressure')
+    with col1:
+        chol = st.text_input('Serum Choestroal in mg/dl')
+    with col2:   
+        fbs = st.text_input('Fating Blood Suger>120 mg/dl')  
+    with col3:
+        restecg = st.text_input('Resting Electrocardiographic results') 
+    with col4:
+        maxxHeartRate = st.text_input('Maximum hart rate achieved')
+    with col1:
+        exang = st.text_input('Exercise Induced Angina')
+    with col2:
+        oldpeak = st.text_input('oldpeak')
+    with col3:
+        slope = st.text_input('ST depression induced by erercise')
+    with col4:
+        ca= st.text_input('Slope of the peak exercise ST segment')
+    with col1:
+        thal = st.text_input('Major vessels coloures by flourosopy')
+
+# code for Predication
+    heart_diagnosis =  ''     
+
+# Create a button for Predication
+
+    if st.button('Heart Disease Test Result'):
+        heart_prediction = heart_model.predict([[age,sex,cp,RestingBP,chol,fbs,restecg,maxxHeartRate,exang,oldpeak,slope,ca,thal]])   
+
+        if(heart_prediction[0]==1):
+            heart_diagnosis = 'The person has heart disease'
+        else:
+            heart_diagnosis = 'The person does not have heart disease'
+
+        st.success(heart_diagnosis)
             
