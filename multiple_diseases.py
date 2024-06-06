@@ -11,6 +11,7 @@ import random
 #loading the saved models
 
 kidney_model = pickle.load(open('kidney_model.sav', 'rb'))
+heart_model = pickle.load(open("heart.sav",'rb'))
 
 #SIDEBAR FOR NAVIGATION
 with st.sidebar:
