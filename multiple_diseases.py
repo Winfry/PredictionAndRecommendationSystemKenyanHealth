@@ -163,7 +163,7 @@ if selected == 'Heart Disease Prediction':
 
         user_input = [float(x) for x in user_input]
 
-        heart_prediction = heart_disease_model.predict([user_input])
+        heart_prediction = heart_model.predict([user_input])
 
         if heart_prediction[0] == 1:
             heart_diagnosis = 'The person is having heart disease'
