@@ -106,7 +106,7 @@ if (selected == 'Chronic Kidney Prediction'):
 
 
 # Heart Disease Prediction Page
-if selected == 'Heart Disease Prediction':
+if selected == 'Heart Prediction':
 
     # page title
     st.title('Heart Disease Prediction using ML')
