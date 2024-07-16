@@ -13,6 +13,7 @@ import random
 kidney_model = pickle.load(open('kidney_model.sav', 'rb'))
 heart_model = pickle.load(open("heart_model.sav",'rb'))
 
+
 #SIDEBAR FOR NAVIGATION
 with st.sidebar:
     selected = option_menu('Multiple Disease Prediction System',
