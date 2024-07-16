@@ -1,4 +1,5 @@
 import pickle
+import os
 import streamlit as st
 from streamlit_option_menu import option_menu
 from PIL import Image
@@ -13,6 +14,9 @@ import random
 st.set_page_config(page_title="Health Assistant",
                    layout="wide",
                    page_icon="🧑‍⚕️")
+
+# getting the working directory of the main.py
+working_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 #loading the saved models
