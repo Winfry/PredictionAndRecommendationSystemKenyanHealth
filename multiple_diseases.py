@@ -8,6 +8,13 @@ import pandas as pd
 import numpy as np
 import random
 
+
+# Set page configuration
+st.set_page_config(page_title="Health Assistant",
+                   layout="wide",
+                   page_icon="🧑‍⚕️")
+
+
 #loading the saved models
 
 kidney_model = pickle.load(open('kidney_model.sav', 'rb'))
