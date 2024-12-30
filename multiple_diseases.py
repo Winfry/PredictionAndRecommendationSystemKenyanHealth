@@ -43,6 +43,8 @@ with st.sidebar:
                             icons=['pulse','activity','heart','person'],
                             default_index=0)
 
+st.write(f"Selected Page: {selected}")
+st.write(f"Model Loaded: {heart_model is not None}")
 
 #CHRONIC KIDNEY PREDICTION PAGE 
 if (selected == 'Chronic Kidney Prediction'): 
@@ -126,70 +128,73 @@ if (selected == 'Chronic Kidney Prediction'):
 # Heart Disease Prediction Page
 if selected == 'Heart Prediction':
 
-    # page title
+    # Page title
     st.title('Heart Disease Prediction using ML')
 
+    # Input fields
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        age = st.text_input('Age', min_value=0, max_value=120, value=25)
+        age = st.text_input('Age (e.g., 25)', value="25")
 
     with col2:
-        sex = st.text_input('Sex')
+        sex = st.text_input('Sex (0 = Female, 1 = Male)', value="1")
 
     with col3:
-        cp = st.text_input('Chest Pain types',min_value=0, max_value=3)
+        cp = st.text_input('Chest Pain Type (0-3)', value="0")
 
     with col1:
-        trestbps = st.text_input('Resting Blood Pressure')
+        trestbps = st.text_input('Resting Blood Pressure (e.g., 120)', value="120")
 
     with col2:
-        chol = st.text_input('Serum Cholestoral in mg/dl')
+        chol = st.text_input('Serum Cholesterol in mg/dl (e.g., 200)', value="200")
 
     with col3:
-        fbs = st.text_input('Fasting Blood Sugar > 120 mg/dl')
+        fbs = st.text_input('Fasting Blood Sugar > 120 mg/dl (0 or 1)', value="0")
 
     with col1:
-        restecg = st.text_input('Resting Electrocardiographic results')
+        restecg = st.text_input('Resting ECG Results (0-2)', value="0")
 
     with col2:
-        thalach = st.text_input('Maximum Heart Rate achieved')
+        thalach = st.text_input('Max Heart Rate Achieved (e.g., 150)', value="150")
 
     with col3:
-        exang = st.text_input('Exercise Induced Angina')
+        exang = st.text_input('Exercise Induced Angina (0 or 1)', value="0")
 
     with col1:
-        oldpeak = st.text_input('ST depression induced by exercise')
+        oldpeak = st.text_input('ST Depression Induced by Exercise (e.g., 1.0)', value="1.0")
 
     with col2:
-        slope = st.text_input('Slope of the peak exercise ST segment')
+        slope = st.text_input('Slope of the Peak Exercise ST Segment (0-2)', value="0")
 
     with col3:
-        ca = st.text_input('Major vessels colored by flourosopy')
+        ca = st.text_input('Major Vessels Colored by Fluoroscopy (0-3)', value="0")
 
     with col1:
-        thal = st.text_input('thal: 0 = normal; 1 = fixed defect; 2 = reversable defect')
+        thal = st.text_input('Thal (0 = Normal, 1 = Fixed Defect, 2 = Reversible Defect)', value="0")
 
-    # code for Prediction
+    # Prediction
     heart_diagnosis = ''
 
-    # creating a button for Prediction
-
     if st.button('Heart Disease Test Result'):
+        try:
+            # Convert inputs to floats
+            user_input = [float(age), float(sex), float(cp), float(trestbps), float(chol), 
+                          float(fbs), float(restecg), float(thalach), float(exang), 
+                          float(oldpeak), float(slope), float(ca), float(thal)]
+            
+            # Make prediction
+            heart_prediction = heart_model.predict([user_input])
 
-        user_input = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
+            # Display result
+            if heart_prediction[0] == 1:
+                heart_diagnosis = 'The person is having heart disease'
+            else:
+                heart_diagnosis = 'The person does not have any heart disease'
 
-        user_input = [float(x) for x in user_input]
+            st.success(heart_diagnosis)
         
-        user_input = pd.DataFrame([user_input], columns=feature_names)
-
-        heart_prediction = heart_model.predict([user_input])
-
-        if heart_prediction[0] == 1:
-            heart_diagnosis = 'The person is having heart disease'
-        else:
-            heart_diagnosis = 'The person does not have any heart disease'
-
-    st.success(heart_diagnosis)
+        except ValueError:
+            st.error("Please enter valid numeric values for all inputs.")
 
             
