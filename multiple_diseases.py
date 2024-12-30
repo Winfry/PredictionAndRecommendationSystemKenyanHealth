@@ -18,7 +18,7 @@ st.set_page_config(page_title="Health Assistant",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
-# getting the working directory of the main.py
+# Getting the working directory of the main.py
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -136,8 +136,6 @@ if (selected == 'Chronic Kidney Prediction'):
             #Applying the data
            
             
-
-
 # Heart Disease Prediction Page
 if selected == 'Heart Prediction':
 
@@ -208,6 +206,4 @@ if selected == 'Heart Prediction':
             st.success(heart_diagnosis)
         
         except ValueError:
-            st.error("Please enter valid numeric values for all inputs.")
-
-            
+            st.error("Please enter valid numerical values for all inputs.")
