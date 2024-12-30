@@ -13,4 +13,8 @@ import warnings
 # Suppress warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
+
+# getting the working directory of the main.py
+working_dir = os.path.dirname(os.path.abspath(__file__))
+
 heart_model = pickle.load(open("heart_model.sav",'rb'))
