@@ -9,7 +9,9 @@ import pandas as pd
 import numpy as np
 import random
 import joblib
-
+import warnings
+# Suppress warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 # Set page configuration
 st.set_page_config(page_title="Health Assistant",
@@ -175,6 +177,8 @@ if selected == 'Heart Prediction':
         user_input = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
 
         user_input = [float(x) for x in user_input]
+        
+        user_input = pd.DataFrame([user_input], columns=feature_names)
 
         heart_prediction = heart_model.predict([user_input])
 
