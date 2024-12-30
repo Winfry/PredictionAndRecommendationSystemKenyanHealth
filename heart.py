@@ -12,12 +12,26 @@ warnings.filterwarnings("ignore", category=UserWarning)
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Load the model
-model_path = os.path.join(working_dir, "heart_model.sav")
-if not os.path.exists(model_path):
-    st.error("Model file not found! Ensure 'heart_model.sav' is in the correct directory.")
-else:
-    heart_model = pickle.load(open(model_path, "rb"))
-
+try:
+    # Kidney model
+    kidney_model_path = os.path.join(working_dir, "kidney_model.sav")
+    if not os.path.exists(kidney_model_path):
+        st.error("Kidney model file not found! Ensure 'kidney_model.sav' is in the correct directory.")
+        kidney_model = None
+    else:
+        kidney_model = pickle.load(open(kidney_model_path, "rb"))
+        st.success("Kidney model loaded successfully.")
+    
+    # Heart model
+    heart_model_path = os.path.join(working_dir, "heart_model.sav")
+    if not os.path.exists(heart_model_path):
+        st.error("Heart model file not found! Ensure 'heart_model.sav' is in the correct directory.")
+        heart_model = None
+    else:
+        heart_model = pickle.load(open(heart_model_path, "rb"))
+        st.success("Heart model loaded successfully.")
+except Exception as e:
+    st.error(f"An error occurred while loading models: {e}")
 # Sidebar for navigation
 with st.sidebar:
     selected = option_menu(
@@ -29,10 +43,6 @@ with st.sidebar:
 
 st.write(f"Selected Page: {selected}")
 st.write(f"Model Loaded: {heart_model is not None}")
-
-
-test_input = [[63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1]]
-st.write(f"Test Prediction: {heart_model.predict(test_input)}")
 
 # Heart Disease Prediction Page
 if selected == 'Heart Prediction':

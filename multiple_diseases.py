@@ -23,13 +23,26 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 #loading the saved models
-kidney_model = pickle.load(open('kidney_model.sav', 'rb'))
-model_path = os.path.join(working_dir, "heart_model.sav")
-if not os.path.exists(model_path):
-    st.error("Model file not found! Ensure 'heart_model.sav' is in the correct directory.")
-else:
-    heart_model = pickle.load(open(model_path, "rb"))
-
+try:
+    # Kidney model
+    kidney_model_path = os.path.join(working_dir, "kidney_model.sav")
+    if not os.path.exists(kidney_model_path):
+        st.error("Kidney model file not found! Ensure 'kidney_model.sav' is in the correct directory.")
+        kidney_model = None
+    else:
+        kidney_model = pickle.load(open(kidney_model_path, "rb"))
+        st.success("Kidney model loaded successfully.")
+    
+    # Heart model
+    heart_model_path = os.path.join(working_dir, "heart_model.sav")
+    if not os.path.exists(heart_model_path):
+        st.error("Heart model file not found! Ensure 'heart_model.sav' is in the correct directory.")
+        heart_model = None
+    else:
+        heart_model = pickle.load(open(heart_model_path, "rb"))
+        st.success("Heart model loaded successfully.")
+except Exception as e:
+    st.error(f"An error occurred while loading models: {e}")
 
 #SIDEBAR FOR NAVIGATION
 with st.sidebar:
