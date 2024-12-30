@@ -30,6 +30,10 @@ with st.sidebar:
 st.write(f"Selected Page: {selected}")
 st.write(f"Model Loaded: {heart_model is not None}")
 
+
+test_input = [[63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1]]
+st.write(f"Test Prediction: {heart_model.predict(test_input)}")
+
 # Heart Disease Prediction Page
 if selected == 'Heart Prediction':
 
