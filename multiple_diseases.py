@@ -127,13 +127,13 @@ if selected == 'Heart Prediction':
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        age = st.text_input('Age')
+        age = st.text_input('Age', min_value=0, max_value=120, value=25)
 
     with col2:
         sex = st.text_input('Sex')
 
     with col3:
-        cp = st.text_input('Chest Pain types')
+        cp = st.text_input('Chest Pain types',min_value=0, max_value=3)
 
     with col1:
         trestbps = st.text_input('Resting Blood Pressure')
