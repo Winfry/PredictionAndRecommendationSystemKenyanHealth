@@ -24,8 +24,11 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 
 #loading the saved models
 kidney_model = pickle.load(open('kidney_model.sav', 'rb'))
-heart_model = pickle.load(open("heart_model.sav",'rb'))
-
+model_path = os.path.join(working_dir, "heart_model.sav")
+if not os.path.exists(model_path):
+    st.error("Model file not found! Ensure 'heart_model.sav' is in the correct directory.")
+else:
+    heart_model = pickle.load(open(model_path, "rb"))
 
 
 #SIDEBAR FOR NAVIGATION

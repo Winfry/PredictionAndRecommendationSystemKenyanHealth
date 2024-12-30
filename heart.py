@@ -21,10 +21,10 @@ else:
 # Sidebar for navigation
 with st.sidebar:
     selected = option_menu(
-        'Multiple Disease Prediction System',
-        ['Chronic Kidney Prediction', 'Cancer Prediction', 'Heart Prediction ', 'Diabetes Prediction'],
-        icons=['pulse', 'activity', 'heart', 'person'],
-        default_index=0
+       'Multiple Disease Prediction System',
+    ['Chronic Kidney Prediction', 'Cancer Prediction', 'Heart Prediction', 'Diabetes Prediction'],  # Remove extra space
+    icons=['pulse', 'activity', 'heart', 'person'],
+    default_index=0 
     )
 
 st.write(f"Selected Page: {selected}")
